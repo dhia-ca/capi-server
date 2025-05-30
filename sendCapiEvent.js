@@ -1,9 +1,12 @@
 const express = require('express');
 const fetch = require('node-fetch');
+const cors = require('cors'); // ✅ Required for CORS fix
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(cors()); // ✅ Enable CORS
 app.use(express.json());
+
 
 app.post('/send-capi', async (req, res) => {
   const {
