@@ -17,7 +17,7 @@ app.post('/send-capi', async (req, res) => {
     content_category,
     event_source_url,
     user_agent,
-    user_data // optional
+    user_data // ✅ accept hashed user_data from frontend
   } = req.body;
 
   // ✅ Basic validation
@@ -40,7 +40,7 @@ app.post('/send-capi', async (req, res) => {
         action_source: "website",
         event_source_url,
         user_data: {
-          ...user_data,
+          ...user_data, // ✅ pass hashed ph (or em) from frontend
           client_user_agent: user_agent
         },
         custom_data: {
